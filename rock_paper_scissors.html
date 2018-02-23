@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+  function computerPlay() {
+    let comp
+    let computer_move = (Math.random() * 3) + 1
+    computer_move = Math.floor(computer_move)
+    if (computer_move == 1) {
+      comp = "rock";
+    }
+    else if (computer_move == 2) {
+      comp = "paper";
+    }
+    else {
+      comp = "scissors";
+    }
+    return comp;
+  }
+
+  function singleRound (playerSelection, computerSelection) {
+    let outcome
+    if (playerSelection == "rock" && computerSelection == "rock") {
+      outcome = "You picked rock and the computer picked rock...You tied!"
+    }
+    else if (playerSelection == "rock" && computerSelection == "paper") {
+      outcome = "You picked rock and the computer picked paper...You lose!"
+    }
+    else if (playerSelection == "rock" && computerSelection == "scissors") {
+      outcome = "You picked rock and the computer picked scissors...You win!"
+    }
+    else if (playerSelection == "paper" && computerSelection == "rock") {
+      outcome = "You picked paper and the computer picked rock...You win!"
+    }
+    else if (playerSelection == "paper" && computerSelection == "paper") {
+      outcome = "You picked paper and the computer picked paper...You tied!"
+    }
+    else if (playerSelection == "paper" && computerSelection == "scissors") {
+      outcome = "You picked paper and the computer picked scissors...You lose!"
+    }
+    else if (playerSelection == "scissors" && computerSelection == "rock") {
+      outcome = "You picked scissors and the computer picked rock...You lose!"
+    }
+    else if (playerSelection == "scissors" && computerSelection == "paper") {
+      outcome = "You picked scissors and the computer picked paper...You win!"
+    }
+    else if (playerSelection == "scissors" && computerSelection == "scissors") {
+      outcome = "You picked scissors and the computer picked scissors...You tied!"
+    }
+    else {
+      outcome = "Thats not a move in rock, paper, scissors!"
+    }
+    return outcome;
+  }
+
+  function game() {
+    let round_number = 0
+    
+  }
+
+  let playerSelection = prompt("Choose rock, paper or scissors...")
+  playerSelection = playerSelection.toLowerCase()
+  const computerSelection = computerPlay()
+  console.log(singleRound(playerSelection, computerSelection))
+  </script>
+</body>
+</html>
