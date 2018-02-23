@@ -13,7 +13,7 @@
   let outcome
   let playerSelection
   let computerSelection
-
+  let numberOfRounds
 
   function computerPlay() {
     let computer_move = (Math.random() * 3) + 1
@@ -65,14 +65,27 @@
     return outcome;
   }
 
-  function userInput(){
+  function userInput() {
     playerSelection = prompt("Choose rock, paper or scissors...")
     playerSelection = playerSelection.toLowerCase()
     return playerSelection
   }
 
-  function game() {
-    while (round_number < 5) {
+  function welcome() {
+    numberOfRounds = prompt("Welcome to the rock, paper, scissors world championship!  How many rounds would you like to play?")
+    while (Number.isInteger(numberOfRounds) == false) {
+      numberOfRounds = Math.floor(numberOfRounds)
+      if (Number.isInteger(numberOfRounds) == true) {
+        return numberOfRounds
+      }
+      else {
+        numberOfRounds = prompt("That was not a number!  Please enter the number of rounds you would like to play.")
+      }
+    }
+  }
+
+  function game(numberOfRounds) {
+    while (round_number < numberOfRounds) {
       playerSelection = userInput()
       computerSelection = computerPlay()
       let outcomeArray = singleRound(playerSelection, computerSelection)
@@ -107,7 +120,8 @@
     }
   }
 
-game()
+
+game(welcome())
   </script>
 </body>
 </html>
