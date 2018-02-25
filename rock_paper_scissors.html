@@ -4,6 +4,9 @@
   <title>Page Title</title>
 </head>
 <body>
+  <button id="1">Rock</button>
+  <button id="2">Paper</button>
+  <button id="3">Scissors</button>
   <script>
   let comp
   let round_number = 0
@@ -13,7 +16,7 @@
   let outcome
   let playerSelection
   let computerSelection
-  let numberOfRounds
+  let numberOfRounds = 5
 
   function computerPlay() {
     let computer_move = (Math.random() * 3) + 1
@@ -65,11 +68,7 @@
     return outcome;
   }
 
-  function userInput() {
-    playerSelection = prompt("Choose rock, paper or scissors...")
-    playerSelection = playerSelection.toLowerCase()
-    return playerSelection
-  }
+
 
   function welcome() {
     numberOfRounds = prompt("Welcome to the rock, paper, scissors world championship!  How many rounds would you like to play?")
@@ -84,9 +83,7 @@
     }
   }
 
-  function game(numberOfRounds) {
-    while (round_number < numberOfRounds) {
-      playerSelection = userInput()
+  function game() {
       computerSelection = computerPlay()
       let outcomeArray = singleRound(playerSelection, computerSelection)
         if (outcomeArray[1] == 1) {
@@ -107,21 +104,53 @@
         else if (outcomeArray[1] == 4) {
           console.log(outcomeArray[0])
         }
-    }
-    console.log(`Player Score: ${playerWins} - Computer Score: ${compWins} - Ties: ${ties}`)
-    if (playerWins > compWins) {
-      console.log("Congragulations you beat the computer!")
-    }
-    else if (playerWins < compWins) {
-      console.log("You suck!  You lost to the computer...")
-    }
-    else {
-      console.log("What the hell happened?")
-    }
-  }
+      }
 
 
-game(welcome())
+
+
+      ///// need to create a new function that loops through an decides if numberOfRounds has been met
+      if (round_number == numberOfRounds) {
+        console.log(`Player Score: ${playerWins} - Computer Score: ${compWins} - Ties: ${ties}`)
+        if (playerWins > compWins) {
+          console.log("Congragulations you beat the computer!")
+        }
+        else if (playerWins < compWins) {
+          console.log("You suck!  You lost to the computer...")
+        }
+        else {
+          console.log("What the hell happened?")
+        }
+      }
+
+
+
+
+  const buttons = document.querySelectorAll('button');
+
+  // we use the .forEach method to iterate through each button
+  buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', (e) => {
+      if (button.id==1) {
+        playerSelection = "rock"
+        game()
+      }
+      else if (button.id==2) {
+        playerSelection = "paper"
+        game()
+      }
+      else if (button.id==3) {
+        playerSelection = "scissors"
+        game()
+      }
+})
+})
+
+
+
+
   </script>
 </body>
 </html>
